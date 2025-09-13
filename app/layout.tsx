@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Navbar from "../components/Navbar";
 import WhatsAppFab from "../components/WhatsAppFab";
 
 export const metadata: Metadata = {
@@ -26,16 +27,15 @@ export const metadata: Metadata = {
     images: ["/SEFA-ACEROS/logo-sefa.png"],
   },
   icons: { icon: "/SEFA-ACEROS/favicon.svg" },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className="bg-[#0b1a2a] text-[#eaf4ff] antialiased">
+      <body className="bg">
+        <a id="top" />
+        <Navbar />
         {children}
         <WhatsAppFab />
       </body>
