@@ -1,102 +1,76 @@
-"use client";
-
+// app/page.tsx
 import NeonBg from "@/components/NeonBg";
 import TiltCard from "@/components/ui/TiltCard";
 
-export default function Home() {
+export default function Page() {
   return (
-    <>
-      <NeonBg />
-
-      <header className="hero">
-        <video
-          className="hero__video"
-          autoPlay
-          muted
-          playsInline
-          loop
-          poster="assets/hero-poster.jpg"
-        >
-          <source src="assets/drone-hero.mp4" type="video/mp4" />
-          <source src="assets/drone-hero.mp4.mp4" type="video/mp4" />
-        </video>
-
-        <div className="hero__overlay">
-          <img src="assets/logo-sefa.png" alt="SEFA ACEROS S.A." className="hero__logo" />
-          <h1 className="hero__title">SEFA ACEROS S.A.</h1>
-          <p className="hero__subtitle">35+ años liderando el mercado argentino</p>
-          <div className="hero__cta">
-            <a
-              className="btn btn--primary"
-              href="https://wa.me/5491140691068?text=Hola%20SEFA%20ACEROS%2C%20quisiera%20una%20cotizaci%C3%B3n."
-              target="_blank"
-              rel="noreferrer"
-            >
-              Cotizar por WhatsApp
-            </a>
-            <a className="btn btn--ghost" href="#servicios">Ver servicios</a>
+    <NeonBg>
+      <main className="container">
+        {/* HERO con video */}
+        <section className="hero" id="home">
+          <video
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="auto"
+            poster="/SEFA-ACEROS/assets/hero-poster.jpg"
+          >
+            <source src="/SEFA-ACEROS/assets/drone-hero.mp4" type="video/mp4" />
+          </video>
+          <div className="overlay" />
+          <div className="copy">
+            <h1 style={{ fontSize: "clamp(28px,3.2vw,46px)", margin: 0 }}>
+              SEFA ACEROS S.A.
+            </h1>
+            <p style={{ opacity: 0.9, margin: 0 }}>
+              35+ años liderando el mercado argentino
+            </p>
+            <div className="cta">
+              <a className="btn" href="#ventas">Ver productos</a>
+              <a className="btn" href="https://wa.me/5491140691068" target="_blank" rel="noreferrer">
+                WhatsApp
+              </a>
+            </div>
           </div>
-        </div>
-      </header>
+        </section>
 
-      <main className="wrap">
-        <section id="servicios" className="section">
-          <h2 className="section-title">Servicios & Ventas</h2>
-
-          <div className="grid-cards">
+        {/* SECCIONES con tarjetas tilt */}
+        <section className="grid" style={{ marginTop: 24 }}>
+          <div className="col-12 col-6">
             <TiltCard
               title="Ventas de Caños, Tubos y Chapas"
-              image="assets/card-ventas.jpg"
               href="#ventas"
+              img="/SEFA-ACEROS/assets/ventas.jpg"
             />
+          </div>
+          <div className="col-12 col-6">
             <TiltCard
               title="Desmontaje y Demolición Industrial"
-              image="assets/card-demo.jpg"
-              href="#demolicion"
+              href="#servicios"
+              img="/SEFA-ACEROS/assets/servicios.jpg"
             />
+          </div>
+          <div className="col-12 col-6">
             <TiltCard
               title="Contacto / WhatsApp"
-              image="assets/card-contacto.jpg"
-              href="https://wa.me/5491140691068?text=Hola%20SEFA%20ACEROS"
-              external
+              href="https://wa.me/5491140691068"
+              img="/SEFA-ACEROS/assets/whatsapp.jpg"
             />
           </div>
         </section>
 
-        <section id="nosotros" className="section">
-          <h2 className="section-title">Nosotros</h2>
-          <p>
-            <strong>Excelencia y Profesionalismo:</strong> experiencia vasta y comprobable. 
-            30+ años de trayectoria. Nace SEFA ACEROS S.A. con socios de amplia trayectoria y
-            las mejores referencias. <strong>Servicios Personalizados:</strong> respetamos los tiempos
-            y necesidades de cada cliente, para agilizar sus procesos productivos.
-          </p>
+        {/* NOSOTROS */}
+        <section style={{ marginTop: 36 }}>
+          <h2>Nosotros</h2>
+          <p><b>Excelencia y Profesionalismo:</b> Nuestra experiencia es vasta y comprobable. Tenemos 30+ años de trayectoria en el rubro. Abriendo nuevos caminos nace SEFA ACEROS S.A. con socios de amplia trayectoria y las mejores referencias.</p>
+          <p><b>Servicios Personalizados:</b> Respetamos los tiempos y las necesidades de cada cliente. Trabajamos con seriedad y responsabilidad para agilizar los procesos productivos.</p>
         </section>
 
-        <section className="section">
-          <h2 className="section-title">Galería</h2>
-          <div className="gallery">
-            <img src="assets/698943B3-2710-419A-971C-E8C83B096A48.jpeg" alt="" />
-            <img src="assets/7432769A-21BF-43A7-A3C1-7F2A5C40E71C.jpeg" alt="" />
-            <img src="assets/DB9CE18F-C084-4195-9618-201F03D63BEF.jpeg" alt="" />
-            <img src="assets/8C98B1E0-CB46-4358-8DEF-989EFE441132.jpeg" alt="" />
-          </div>
-        </section>
+        {/* anclas */}
+        <div id="ventas" />
+        <div id="servicios" />
       </main>
-
-      <a
-        className="wa-float"
-        href="https://wa.me/5491140691068?text=Hola%20SEFA%20ACEROS"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="WhatsApp"
-      >
-        ☎
-      </a>
-
-      <footer className="site-footer">
-        © {new Date().getFullYear()} SEFA ACEROS S.A. — Todos los derechos reservados
-      </footer>
-    </>
+    </NeonBg>
   );
 }
