@@ -1,14 +1,14 @@
 "use client";
 
-import "../components/TiltCard.jsx";
-import TiltCard from "../components/TiltCard.jsx";
-import WhatsAppFab from "../components/WhatsAppFab.jsx";
+import TiltCard from "../components/TiltCard";
+import WhatsAppFab from "../components/WhatsAppFab";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Page() {
   return (
     <>
+      {/* NAV */}
       <nav className="nav">
         <div className="container nav-inner">
           <div className="nav-logo">
@@ -25,6 +25,7 @@ export default function Page() {
       </nav>
 
       <main className="container">
+        {/* HERO VIDEO */}
         <section className="hero">
           <video
             src={`${BASE}/drone-hero.mp4`}
@@ -44,7 +45,8 @@ export default function Page() {
               </div>
               <h1>SEFA ACEROS S.A.</h1>
               <p className="lead">
-                35+ años en el mercado argentino — Caños y tubos con y sin costura, chapas y accesorios certificados/recuperados.
+                35+ años en el mercado argentino — Caños y tubos con y sin costura,
+                chapas y accesorios certificados/recuperados.
               </p>
               <div className="ctas">
                 <a className="btn" href="https://wa.me/5491140691068?text=Hola!%20Quisiera%20cotizar." target="_blank" rel="noopener noreferrer">Cotizar ahora</a>
@@ -54,6 +56,7 @@ export default function Page() {
           </div>
         </section>
 
+        {/* PRODUCTOS & SERVICIOS */}
         <section id="productos" className="section">
           <h2 style={{marginBottom:12}}>Productos &amp; Servicios</h2>
           <div className="grid">
@@ -70,6 +73,7 @@ export default function Page() {
           </div>
         </section>
 
+        {/* NOSOTROS */}
         <section id="nosotros" className="section">
           <h2>Nosotros</h2>
           <p className="lead">
@@ -82,6 +86,7 @@ export default function Page() {
           </ul>
         </section>
 
+        {/* CONTACTO */}
         <section id="contacto" className="section">
           <h2>Contacto</h2>
           <div className="grid">
