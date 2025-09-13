@@ -60,3 +60,34 @@ h1,h2,h3{letter-spacing:.3px}
 .tilt{transform-style:preserve-3d;transition:transform .12s ease}
 .tilt:hover{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.02)}
 .tilt.touch{transform:scale(1.02)}
+/* Fondo NEÓN petróleo */
+.neon-bg {
+  background:
+    radial-gradient(900px 300px at 10% -10%, rgba(0,185,255,0.12), transparent 60%),
+    radial-gradient(900px 300px at 110% 10%, rgba(0,185,255,0.10), transparent 60%),
+    radial-gradient(500px 700px at 50% 120%, rgba(0,130,200,0.18), transparent 60%),
+    #0b1722; /* Azul petróleo base */
+}
+
+/* Botones primarios/secundarios */
+.btn-primary {
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: .6rem 1rem; border-radius: 9999px;
+  background: linear-gradient(135deg, #1e90ff, #00b3ff);
+  color: #fff; font-weight: 700; letter-spacing: .3px;
+  box-shadow: 0 10px 25px rgba(0,179,255,.25);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: .6rem 1rem; border-radius: 9999px;
+  background: rgba(255,255,255,.08);
+  color:#e6f2ff; font-weight:600;
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(6px);
+  transition: background .2s ease, transform .15s ease;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.13); transform: translateY(-1px); }
