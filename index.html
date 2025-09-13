@@ -1,141 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SEFA ACEROS S.A. — Caños, Tubos, Desmontaje y Demolición</title>
-  <meta name="description" content="35+ años en el mercado Argentino. Ventas de caños y tubos con y sin costura, accesorios certificados y recuperados, chapas gruesas. Desmontaje y demolición industrial con disposición final.">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SEFA ACEROS S.A.</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0ea5ff">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- HEADER / LOGO -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand">
-        <img class="logo" src="assets/logo-sefa.png" alt="SEFA ACEROS" />
-        <span class="brand-text">SEFA ACEROS</span>
-      </a>
-
-      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
-
+      <img src="assets/logo-sefa.png" alt="SEFA ACEROS S.A." class="logo" />
       <nav class="nav">
-        <ul class="nav-links">
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#galeria">Galería</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
+        <a href="#productos">Productos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO con video -->
+  <!-- HERO CON VIDEO -->
   <section class="hero">
-    <video
-      class="hero-video"
+    <video class="hero__video"
+      src="assets/drone-hero.mp4.mp4"
       autoplay
       muted
-      playsinline
       loop
+      playsinline
       preload="auto"
-      poster="assets/7B4132D5-E1B4-40A8-BFC1-6A6DF9698F22.jpeg"
-      controlslist="nodownload noplaybackrate"
-    >
-      <source src="assets/drone-hero.webm" type="video/webm" />
-      <source src="assets/drone-hero.mp4" type="video/mp4" />
-      Tu navegador no soporta video HTML5.
-    </video>
+      poster="assets/hero-poster.jpg"></video>
 
-    <div class="hero-overlay"></div>
+    <div class="hero__overlay"></div>
 
-    <div class="hero-content container">
-      <h1>SEFA ACEROS S.A.</h1>
-      <p>35+ años liderando el mercado argentino</p>
-      <div class="hero-buttons">
-        <a class="btn" href="https://wa.me/5491140691068" target="_blank" rel="noopener">Cotizar ahora</a>
-        <a class="btn btn-secondary" href="#productos">Ver productos</a>
+    <div class="hero__content container">
+      <h1 class="hero__title">SEFA ACEROS S.A.</h1>
+      <p class="hero__subtitle">35+ años liderando el mercado argentino</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://wa.me/5491140691068?text=Hola%20SEFA%20ACEROS%2C%20quisiera%20una%20cotizaci%C3%B3n.">Cotizar ahora</a>
+        <a class="btn btn--ghost" href="#productos">Ver productos</a>
       </div>
     </div>
   </section>
 
-  <!-- Productos -->
-  <section id="productos" class="section container">
-    <h2>Productos</h2>
-    <p>Caños y tubos con y sin costura, accesorios para tuberías certificados y recuperados, chapas gruesas.</p>
-    <ul class="bullets">
-      <li>Caños y tubos (con/sin costura)</li>
-      <li>Accesorios certificados y recuperados</li>
-      <li>Chapas gruesas</li>
-    </ul>
-  </section>
-
- <!-- SECCIONES - CARDS 3D -->
-<section id="secciones" class="cards3d neon-bg">
-  <a class="card3d" href="#ventas" data-tilt>
-    <img src="assets/ventas.jpg" alt="Ventas de Caños, Tubos, Chapas" loading="lazy">
-    <div class="card3d__label">Ventas de Caños, Tubos y Chapas</div>
-  </a>
-
-  <a class="card3d" href="#servicios" data-tilt>
-    <img src="assets/servicios.jpg" alt="Desmontaje y Demolición Industrial" loading="lazy">
-    <div class="card3d__label">Desmontaje y Demolición Industrial</div>
-  </a>
-
-  <a class="card3d" href="#contacto" data-tilt>
-    <img src="assets/contacto.jpg" alt="Contacto y WhatsApp" loading="lazy">
-    <div class="card3d__label">Contacto / WhatsApp</div>
-  </a>
-</section>
-
-
-  <!-- Nosotros -->
-  <section id="nosotros" class="section container">
-    <h2>Nosotros</h2>
-    <p><strong>Excelencia y Profesionalismo:</strong> Nuestra experiencia es vasta y comprobable. Tenemos 30 años de trayectoria en el rubro. Abriendo nuevos caminos nace SEFA ACEROS S.A. con socios de amplia trayectoria y las mejores referencias.</p>
-    <p><strong>Servicios Personalizados:</strong> Respetamos los tiempos y necesidades de cada cliente. Nuestro objetivo: trabajar con seriedad y responsabilidad para agilizar los procesos productivos de nuestros clientes.</p>
-  </section>
-
-  <!-- Galería -->
-  <section id="galeria" class="section section-alt">
+  <!-- SECCIONES / CARDS 3D con NEÓN -->
+  <section id="productos" class="neon-bg">
     <div class="container">
-      <h2>Galería</h2>
-      <div class="gallery-grid">
-        <img src="assets/7B4132D5-E1B4-40A8-BFC1-6A6DF9698F22.jpeg" alt="Vista aérea 1" />
-        <img src="assets/ADB53747-9176-4103-917D-D630FFF7DCF5.jpeg" alt="Vista aérea 2" />
-        <img src="assets/DB9CE18F-C084-4195-9618-201F03D63BEF.jpeg" alt="Vista aérea 3" />
-        <img src="assets/7432769A-21BF-43A7-A3C1-7F2A5C40E71C.jpeg" alt="Vista aérea 4" />
-        <img src="assets/698943B3-2710-419A-971C-E8C83B096A48.jpeg" alt="Vista aérea 5" />
-        <img src="assets/8C98B1E0-CB46-4358-8DEF-989EFE441132.jpeg" alt="Vista aérea 6" />
+      <h2 class="section-title">Productos & Accesrios</h2>
+
+      <div class="cards3d">
+        <a class="card3d" href="#ventas" data-tilt>
+          <img src="assets/ventas.jpg" alt="Ventas de Caños, Tubos y Chapas" loading="lazy">
+          <div class="card3d__label">Ventas de Caños, Tubos y Chapas</div>
+        </a>
+
+        <a class="card3d" href="#servicios" data-tilt>
+          <img src="assets/servicios.jpg" alt="Desmontaje y Demolición Industrial" loading="lazy">
+          <div class="card3d__label">Desmontaje y Demolición Industrial</div>
+        </a>
+
+        <a class="card3d" href="#contacto" data-tilt>
+          <img src="assets/contacto.jpg" alt="Contacto y WhatsApp" loading="lazy">
+          <div class="card3d__label">Contacto / WhatsApp</div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto" class="section container">
-    <h2>Contacto</h2>
-    <ul class="contact-info">
-      <li><strong>WhatsApp:</strong> <a href="https://wa.me/5491140691068" target="_blank" rel="noopener">+54 9 11 4069-1068</a></li>
-      <li><strong>Email:</strong> <a href="mailto:comercial@sefaaceros.com">comercial@sefaaceros.com</a></li>
-      <li><strong>Ubicación:</strong> Rosario / Gran Buenos Aires</li>
-    </ul>
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="container">
+      <h2 class="section-title">Nosotros</h2>
+      <p><strong>Excelencia y Profesionalismo:</strong> Nuestra experiencia es vasta y comprobable. Tenemos 30+ años de trayectoria en el rubro. Abriendo nuevos caminos nace SEFA ACEROS S.A. con socios de amplia trayectoria y las mejores referencias.</p>
+      <p><strong>Servicios Personalizados:</strong> Respetamos los tiempos y necesidades de cada cliente. Nuestro objetivo: trabajar con seriedad y responsabilidad para agilizar sus procesos productivos.</p>
+    </div>
   </section>
+
+  <!-- GALERÍA SIMPLE (usa las fotos que subiste a /assets) -->
+  <section class="gallery">
+    <div class="container gallery__grid">
+      <img src="assets/698943B3-2710-419A-971C-E8C83B096A48.jpeg" alt="" loading="lazy">
+      <img src="assets/7432769A-21BF-43A7-A3C1-7F2AC540E7FC.jpeg" alt="" loading="lazy">
+      <img src="assets/DB9CE18F-C084-4195-9618-201F03D63BEF.jpeg" alt="" loading="lazy">
+      <img src="assets/7B4132D5-E1B4-40A8-BFC1-6A6DF9698F22.jpeg" alt="" loading="lazy">
+      <img src="assets/8C98B1E0-CB46-4358-8DEF-989EFE441132.jpeg" alt="" loading="lazy">
+      <img src="assets/7432769A-21BF-43A7-A3C1-7F2AC540E7FC.jpeg" alt="" loading="lazy">
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container contact">
+      <h2 class="section-title">Contacto</h2>
+      <a class="btn btn--primary" href="https://wa.me/5491140691068?text=Hola%20SEFA%20ACEROS%2C%20quisiera%20una%20cotizaci%C3%B3n.">WhatsApp +54 9 11 4069-1068</a>
+      <p>Certificados: accesorios para tuberías, disposición final, servicio de grúa e hidrogrúas, chatarra y astilleros.</p>
+    </div>
+  </section>
+
+  <!-- FLOATING WHATSAPP -->
+  <a class="wa-float" href="https://wa.me/5491140691068?text=Hola%20SEFA%20ACEROS%2C%20quisiera%20una%20cotizaci%C3%B3n." aria-label="WhatsApp">
+    <img src="assets/whatsapp.svg" alt="" />
+  </a>
 
   <footer class="site-footer">
-    <div class="container">
-      © <span id="year"></span> SEFA ACEROS S.A. — Todos los derechos reservados.
-    </div>
+    <div class="container">© <span id="y"></span> SEFA ACEROS S.A. — Todos los derechos reservados</div>
   </footer>
 
-  <script>
-    // Año dinámico
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Menú móvil
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (toggle && links) toggle.addEventListener('click', () => links.classList.toggle('active'));
-  </script>
+  <script src="main.js"></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
