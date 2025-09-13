@@ -9,47 +9,48 @@ type Props = {
 };
 
 export default function TiltCard({ image, title, href }: Props) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const elRef = useRef<HTMLAnchorElement>(null);
 
   const apply = (x = 0, y = 0) => {
-    if (!ref.current) return;
-    ref.current.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) scale(1.02)`;
+    if (!elRef.current) return;
+    elRef.current.style.transform =
+      `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) scale(1.02)`;
   };
 
+  // Mouse
   const onMove = (e: React.MouseEvent | React.TouchEvent) => {
-    const el = ref.current;
+    const el = elRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-
-    const clientX =
-      "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
-    const clientY =
-      "touches" in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
-
-    const px = (clientX - rect.left) / rect.width - 0.5;
-    const py = (clientY - rect.top) / rect.height - 0.5;
-
-    apply(px * 10, -py * 10);
+    const clientX = "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    const clientY = "touches" in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    const px = ((clientX - rect.left) / rect.width - 0.5) * 8;
+    const py = ((clientY - rect.top) / rect.height - 0.5) * -8;
+    apply(px, py);
   };
 
-  const onLeave = () => apply(0, 0);
+  const reset = () => apply(0, 0);
 
   return (
     <a
-      ref={ref}
+      ref={elRef}
       href={href}
-      onMouseMove={onMove as any}
-      onMouseLeave={onLeave}
-      onTouchMove={onMove as any}
-      onTouchEnd={onLeave}
-      className="block rounded-3xl overflow-hidden shadow-lg transition-transform will-change-transform"
-      style={{ transform: "perspective(900px) rotateX(0deg) rotateY(0deg)" }}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      onTouchMove={onMove}
+      onTouchEnd={reset}
+      className="group block overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur ring-1 ring-white/10"
+      style={{ transition: "transform .15s ease" }}
     >
       <div className="relative">
-        <img src={image} alt={title} className="w-full h-56 object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4 text-white font-semibold text-xl drop-shadow">
-          {title}
+        <img
+          src={image} // SIN barra inicial; tus imágenes están en /public
+          alt={title}
+          className="h-64 w-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-x-0 bottom-0 rounded-t-3xl bg-gradient-to-t from-black/70 to-transparent p-5">
+          <h3 className="text-xl font-bold text-white drop-shadow">{title}</h3>
         </div>
       </div>
     </a>
