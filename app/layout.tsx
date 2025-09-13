@@ -1,15 +1,16 @@
-// app/layout.tsx
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-  title: 'SEFA ACEROS S.A.',
-  description: '35+ años liderando el mercado argentino',
+  title: "SEFA ACEROS S.A.",
+  description: "Ventas, servicios y desmontaje industrial"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className="bg-slate-950 text-slate-100 antialiased">
+        {children}
+      </body>
     </html>
   );
 }
