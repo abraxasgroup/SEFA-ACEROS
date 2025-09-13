@@ -1,80 +1,70 @@
-"use client";
+// Página principal
+import TiltCard from "../components/ui/TiltCard";
 
-import TiltCard from "/components/ui/TiltCard";
+const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Page() {
   return (
-    <main>
-
+    <>
       {/* HERO con video */}
       <section className="hero">
         <video
-          className="hero-video"
-          src="/drone-hero.mp4"
+          src={`${prefix}/drone-hero.mp4`}
           autoPlay
           muted
-          loop
           playsInline
-          poster="/logo-sefa.png"
+          loop
+          preload="metadata"
+          poster={`${prefix}/logo-sefa.png`}
         />
-        <div className="hero-overlay" />
-        <div className="hero-content">
-          <img src="/logo-sefa.png" alt="SEFA ACEROS" className="logo" />
-          <h1 className="title">SEFA ACEROS S.A.</h1>
-          <p className="subtitle">35+ años liderando el mercado argentino</p>
-          <div className="cta">
-            <a href="#contacto" className="btn btn-primary">Cotizar ahora</a>
-            <a href="#productos" className="btn btn-link">Ver productos</a>
+        <div className="heroContent">
+          <div className="badge">Industria • Acero • Servicio</div>
+          <h1 className="h1">SEFA ACEROS S.A.</h1>
+          <p className="lead">35+ años liderando el mercado argentino</p>
+          <div className="ctaRow">
+            <a className="btn primary" href="#ventas">Ver productos</a>
+            <a className="btn" href="https://wa.me/5491140691068" target="_blank">Cotizar ahora</a>
           </div>
         </div>
       </section>
 
-      {/* SECCIONES / SERVICIOS */}
+      {/* CARDS */}
       <section id="servicios" className="section">
-        <h2 className="section-title">Productos & Servicios</h2>
-
-        <div className="cards">
-          <TiltCard
-            href="#ventas"
-            image="/ventas.jpg"
-            title="Ventas de Caños, Tubos y Chapas"
-          />
-          <TiltCard
-            href="#servicios"
-            image="/servicio.jpg"
-            title="Desmontaje y Demolición Industrial"
-          />
-          <TiltCard
-            href="#contacto"
-            image="/whatsapp.jpg"
-            title="Contacto / WhatsApp"
-          />
+        <h2>Productos &amp; Servicios</h2>
+        <div className="grid">
+          <div className="col-12 col-6">
+            <TiltCard
+              image="ventas.jpg"
+              title="Ventas de Caños, Tubos y Chapas"
+              href="#ventas"
+            />
+          </div>
+          <div className="col-12 col-6">
+            <TiltCard
+              image="servicio.jpg"
+              title="Desmontaje y Demolición Industrial"
+              href="#servicios"
+            />
+          </div>
+          <div className="col-12">
+            <TiltCard
+              image="contacto.jpg"
+              title="Contacto / WhatsApp"
+              href="https://wa.me/5491140691068"
+            />
+          </div>
         </div>
       </section>
 
-      {/* NOSOTROS */}
-      <section id="nosotros" className="section">
-        <h2 className="section-title">Nosotros</h2>
-        <p className="copy">
-          Excelencia y Profesionalismo. Nuestra experiencia es vasta y comprobable.
-          Negociamos plazos y necesidades con cada cliente.
+      {/* CONTENIDO */}
+      <section id="nosotros" className="section content">
+        <h2>Nosotros</h2>
+        <p>
+          <strong>Excelencia y Profesionalismo.</strong> Nuestra experiencia es
+          vasta y comprobable. Más de tres décadas en el rubro avalan nuestra
+          calidad y servicio.
         </p>
       </section>
-
-      {/* CONTACTO */}
-      <section id="contacto" className="section">
-        <h2 className="section-title">Contacto</h2>
-        <a
-          className="btn btn-primary"
-          href="https://wa.me/5491140691068"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp +54 9 11 4069-1068
-        </a>
-      </section>
-
-      <footer className="footer">© {new Date().getFullYear()} SEFA ACEROS S.A.</footer>
-    </main>
+    </>
   );
 }
