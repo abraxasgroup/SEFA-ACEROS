@@ -1,16 +1,13 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-const repo = 'SEFA-ACEROS';
+const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
-  output: 'export',
-  distDir: 'out',
-  basePath: isProd ? `/${repo}` : '',
-  assetPrefix: isProd ? `/${repo}/` : '',
+  output: "export",
+  trailingSlash: true,
   images: { unoptimized: true },
-  env: {
-    NEXT_PUBLIC_BASE_PATH: isProd ? `/${repo}` : ''
-  }
+  basePath: isProd ? "/SEFA-ACEROS" : "",
+  assetPrefix: isProd ? "/SEFA-ACEROS/" : ""
 };
 
 module.exports = nextConfig;
