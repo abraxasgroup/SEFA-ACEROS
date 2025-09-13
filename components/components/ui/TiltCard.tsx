@@ -1,49 +1,51 @@
 "use client";
-
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 type Props = {
   title: string;
-  image: string;
   href: string;
-  external?: boolean;
+  img: string;
+  alt?: string;
 };
 
-export default function TiltCard({ title, image, href, external }: Props) {
-  const ref = useRef<HTMLAnchorElement | null>(null);
+export default function TiltCard({ title, href, img, alt }: Props) {
+  const ref = useRef<HTMLAnchorElement>(null);
 
-  const onPointerMove = (e: React.PointerEvent) => {
+  const onMove = (e: React.MouseEvent) => {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    const p = (e as any).touches?.[0] ?? e;
-    const cx = p.clientX - r.left;
-    const cy = p.clientY - r.top;
-    const rx = ((cy / r.height) - 0.5) * -18; // grados
-    const ry = ((cx / r.width)  - 0.5) *  18;
-    el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    const ry = (px - 0.5) * 10;
+    const rx = (0.5 - py) * 10;
+    el.style.setProperty("--ry", `${ry}deg`);
+    el.style.setProperty("--rx", `${rx}deg`);
   };
 
-  const reset = () => {
+  const onLeave = () => {
     const el = ref.current;
     if (!el) return;
-    el.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
+    el.style.setProperty("--ry", `0deg`);
+    el.style.setProperty("--rx", `0deg`);
+  };
+
+  const onTouch = () => {
+    ref.current?.classList.add("touch");
+    setTimeout(() => ref.current?.classList.remove("touch"), 280);
   };
 
   return (
     <a
       ref={ref}
       href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      className="tilt"
-      onPointerMove={onPointerMove}
-      onPointerLeave={reset}
-      onPointerCancel={reset}
-      onPointerUp={reset}
+      className="card tilt"
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      onTouchStart={onTouch}
     >
-      <img src={image} alt="" className="tilt__img" />
-      <span className="tilt__label">{title}</span>
+      <img src={img} alt={alt ?? title} />
+      <div className="title">{title}</div>
     </a>
   );
 }
