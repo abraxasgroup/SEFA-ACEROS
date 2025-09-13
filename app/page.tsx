@@ -1,6 +1,6 @@
 "use client";
 
-import TiltCard from "@/components/ui/TiltCard";
+import TiltCard from "/components/ui/TiltCard";
 
 export default function Page() {
   return (
