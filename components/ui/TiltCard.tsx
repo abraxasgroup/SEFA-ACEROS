@@ -11,41 +11,43 @@ type Props = {
 export default function TiltCard({ image, title, href }: Props) {
   const ref = useRef<HTMLAnchorElement>(null);
 
-  const onMove = (e: React.MouseEvent) => {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    const rx = (+py * 8).toFixed(2);
-    const ry = (-px * 8).toFixed(2);
-    el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+  const apply = (x = 0, y = 0) => {
+    if (!ref.current) return;
+    ref.current.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) scale(1.02)`;
   };
 
-  const reset = () => {
+  const onMove = (e: React.MouseEvent | React.TouchEvent) => {
     const el = ref.current;
     if (!el) return;
-    el.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)`;
+    const rect = el.getBoundingClientRect();
+
+    const clientX =
+      "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    const clientY =
+      "touches" in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+
+    const px = (clientX - rect.left) / rect.width - 0.5;
+    const py = (clientY - rect.top) / rect.height - 0.5;
+
+    apply(px * 10, -py * 10);
   };
 
-  const press = () => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = `perspective(900px) scale(0.98)`;
-  };
+  const onLeave = () => apply(0, 0);
+
+  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <a
       ref={ref}
-      href={href}
       className="tilt"
+      href={href}
       onMouseMove={onMove}
-      onMouseLeave={reset}
-      onTouchStart={press}
-      onTouchEnd={reset}
-      style={{ backgroundImage: `url(${image})` }}
+      onMouseLeave={onLeave}
+      onTouchMove={onMove}
+      onTouchEnd={onLeave}
     >
-      <span className="tilt-title">{title}</span>
+      <img src={`${prefix}/${image}`} alt={title} loading="lazy" />
+      <div className="titleBar">{title}</div>
     </a>
   );
 }
