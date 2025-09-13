@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === "production";
-const repo = "SEFA-ACEROS";
+const isProd = process.env.NODE_ENV === 'production';
+const repo = 'SEFA-ACEROS';
 
-const nextConfig = {
-  output: "export",
-  basePath: isProd ? `/${repo}` : "",
-  assetPrefix: isProd ? `/${repo}/` : "",
-  images: { unoptimized: true },
-  trailingSlash: true,
+module.exports = {
+  output: 'export',              // reemplaza a `next export`
+  trailingSlash: true,           // ayuda en GitHub Pages
+  basePath: isProd ? `/${repo}` : '',
+  assetPrefix: isProd ? `/${repo}/` : '',
+  images: { unoptimized: true }, // necesario en export estático
 };
-
-export default nextConfig;
