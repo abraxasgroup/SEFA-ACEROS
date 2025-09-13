@@ -34,20 +34,24 @@ export default function TiltCard({ image, title, href }: Props) {
 
   const onLeave = () => apply(0, 0);
 
-  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
   return (
     <a
       ref={ref}
-      className="tilt"
       href={href}
-      onMouseMove={onMove}
+      onMouseMove={onMove as any}
       onMouseLeave={onLeave}
-      onTouchMove={onMove}
+      onTouchMove={onMove as any}
       onTouchEnd={onLeave}
+      className="block rounded-3xl overflow-hidden shadow-lg transition-transform will-change-transform"
+      style={{ transform: "perspective(900px) rotateX(0deg) rotateY(0deg)" }}
     >
-      <img src={`${prefix}/${image}`} alt={title} loading="lazy" />
-      <div className="titleBar">{title}</div>
+      <div className="relative">
+        <img src={image} alt={title} className="w-full h-56 object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 text-white font-semibold text-xl drop-shadow">
+          {title}
+        </div>
+      </div>
     </a>
   );
 }
