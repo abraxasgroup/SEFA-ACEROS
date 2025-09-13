@@ -1,20 +1,14 @@
-import './globals.css';
-import { ReactNode } from 'react';
-import { GluestackUIProvider } from '@gluestack-ui/themed';
-
 export const metadata = {
-  title: 'SEFA ACEROS — Caños, Tubos, Desmontaje & Demolición',
-  description: 'SEFA ACEROS — Más de 35 años en el mercado argentino.'
+  title: "SEFA ACEROS S.A.",
+  description: "35+ años liderando el mercado argentino"
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+import "./globals.css";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body>
-        <GluestackUIProvider>
-          {children}
-        </GluestackUIProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
