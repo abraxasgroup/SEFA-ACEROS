@@ -16,22 +16,23 @@ export default function TiltCard({ title, image, href, external }: Props) {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `rotateY(${px * 10}deg) rotateX(${-py * 10}deg) translateZ(0) scale(1.02)`;
+    const p = (e as any).touches?.[0] ?? e;
+    const cx = p.clientX - r.left;
+    const cy = p.clientY - r.top;
+    const rx = ((cy / r.height) - 0.5) * -18; // grados
+    const ry = ((cx / r.width)  - 0.5) *  18;
+    el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
   };
 
   const reset = () => {
     const el = ref.current;
     if (!el) return;
-    el.style.transform = "rotateY(0) rotateX(0) translateZ(0) scale(1)";
+    el.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
   };
 
-  const A = external ? "a" : "a";
-
   return (
-    <A
-      ref={ref as any}
+    <a
+      ref={ref}
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
@@ -43,7 +44,6 @@ export default function TiltCard({ title, image, href, external }: Props) {
     >
       <img src={image} alt="" className="tilt__img" />
       <span className="tilt__label">{title}</span>
-    </A>
+    </a>
   );
 }
-
