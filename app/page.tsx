@@ -54,10 +54,10 @@ export default function Page() {
               href="#ventas"
             />
             <TiltCard
-              image="servicio.jpg"
-              title="Desmontaje y Demolición Industrial (certificado final)"
-              href="#servicios"
-            />
+  image="/servicios.jpg"
+  title="Desmontaje y Demolición Industrial (certificado final)"
+  href="#servicios"
+/>
             <TiltCard
               image="contacto.jpg"
               title="Contacto — WhatsApp"
@@ -111,11 +111,9 @@ export default function Page() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="container">
-          © {new Date().getFullYear()} SEFA ACEROS S.A. · Rosario, Santa Fe, Argentina
-        </div>
-      </footer>
-    </main>
-  );
-}
+     <footer className="footer">
+  © {new Date().getFullYear()} SEFA ACEROS S.A. · Ingeniero Allan, Buenos Aires, Argentina ·{" "}
+  <a href="https://maps.app.goo.gl/Jhbox4C37dfeSjFx8" target="_blank" rel="noopener noreferrer" className="underline">
+    Ver en Google Maps
+  </a>
+</footer>
