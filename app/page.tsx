@@ -1,5 +1,5 @@
 // Página principal
-import TiltCard from "../components/ui/TiltCard";
+import TiltCard from "..@/components/ui/TiltCard";
 
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
