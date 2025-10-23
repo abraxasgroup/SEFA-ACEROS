@@ -1,0 +1,476 @@
+/*
+  Estilos principales para el sitio de SEFA ACEROS S.A.
+  Inspirados en la versión actual del sitio con temática oscura y
+  tarjetas con superposición. Este archivo utiliza variables CSS para
+  facilitar el ajuste de colores y un layout responsivo basado en grid.
+*/
+
+:root {
+  --bg-color: #021f3e;
+  --dark: #011526;
+  --primary: #1a8cd8;
+  --primary-hover: #1669b2;
+  --secondary-bg: rgba(255, 255, 255, 0.1);
+  --secondary-border: rgba(255, 255, 255, 0.2);
+  --accent: #00a94f;
+  --text: #e5eaf3;
+  --muted: #7a9ebf;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Ajustamos el fondo para usar el patrón metálico proporcionado. Aplicamos
+     un modo de mezcla para que el patrón se integre con el color base sin
+     perjudicar la legibilidad. El patrón se repite y se fija para crear
+     un efecto de textura constante. */
+  /* Usamos un degradado oscuro semitransparente sobre la textura metálica para
+     garantizar legibilidad. El patrón se repite y queda fijado para un
+     efecto visual constante */
+  background: linear-gradient(rgba(2, 31, 62, 0.6), rgba(2, 31, 62, 0.6)),
+              url("assets/images/fondo_web.png");
+  background-repeat: repeat;
+  background-size: 500px 500px;
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Barra de navegación */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(2, 31, 62, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-container .logo {
+  height: 40px;
+  /* El logo ya es blanco con fondo transparente; ajustamos la opacidad para que
+     se mimetice con el encabezado y no parezca una estampilla */
+  opacity: 0.9;
+}
+
+.nav-container nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-container nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-container nav a:hover {
+  color: var(--primary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-whatsapp {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 169, 79, 0.6);
+  font-size: 0.9rem;
+}
+
+.btn-whatsapp:hover {
+  background: #008a3b;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  /* Atenuamos ligeramente el video de fondo para disimular su baja resolución */
+  filter: brightness(0.6);
+}
+
+.hero-overlay {
+  position: relative;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.hero-overlay .tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.hero-overlay .tags span {
+  background: var(--secondary-bg);
+  border: 1px solid var(--secondary-border);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.hero-overlay p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--secondary-bg);
+  border: 1px solid var(--secondary-border);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Productos */
+.products {
+  padding: 80px 40px;
+  /* Utilizamos un fondo semitransparente para dejar ver la textura metálica
+     sin dificultar la lectura del contenido. */
+  background: rgba(2, 31, 62, 0.85);
+}
+
+.products h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  /* Configuramos el estado inicial de las tarjetas para que aparezcan con
+     animación al hacer scroll */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Zoom suave en la imagen al pasar el cursor */
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card .card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.1)
+  );
+  color: #fff;
+}
+
+/* Hover effect on product cards */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.product-card:hover .card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.product-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Nosotros */
+.about {
+  padding: 80px 40px;
+  /* Fondo oscuro semitransparente para integrar la textura metálica de fondo */
+  background: rgba(1, 21, 38, 0.9);
+}
+
+.about h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.features {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.features i {
+  color: var(--primary);
+}
+
+/* Contacto */
+.contact {
+  padding: 80px 40px;
+  /* Fondo semitransparente para que el patrón metálico se asome y a la vez
+     mantenga la legibilidad del texto. */
+  background: rgba(2, 31, 62, 0.85);
+  text-align: center;
+  color: #fff;
+}
+
+/* Animaciones de entrada */
+.animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.contact h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.contact-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-card .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  color: #fff;
+}
+
+/* Disposición de las tarjetas de contacto y redes sociales */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.contact-grid .contact-card {
+  flex: 1 1 280px;
+  max-width: 400px;
+}
+
+/* Iconos de redes sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* Estado visible de las tarjetas de producto al ser observadas por IntersectionObserver */
+.product-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-card h3 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.contact .location {
+  margin: 10px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.contact a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* Pie de página */
+footer {
+  padding: 20px 40px;
+  background: var(--dark);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .hero-overlay h1 {
+    font-size: 2.4rem;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
