@@ -1,0 +1,6 @@
+DirectoryIndex index.html index.php
+RewriteEngine On
+# Fuerza HTTPS + WWW
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\\.sefa\\.com\\.ar$ [NC]
+RewriteRule ^ https://www.sefa.com.ar%{REQUEST_URI} [L,R=301]
